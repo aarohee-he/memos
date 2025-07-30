@@ -115,8 +115,8 @@ const LocationSelector = (props: Props) => {
           </Button>
         </PopoverTrigger>
       </TooltipTrigger>
-      <TooltipContent side="top">
-        <p>{t("location.location-tooltip")}</p>
+      <TooltipContent side="bottom">
+        <p>{t("tooltip.select-location")}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

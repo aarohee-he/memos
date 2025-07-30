@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Location } from "@/types/proto/api/v1/memo_service";
 import { useTranslate } from "@/utils/i18n";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 interface Props {
   location?: Location;
@@ -105,11 +106,21 @@ const LocationSelector = (props: Props) => {
           </Button>
         </div>
       ) : (
+    <TooltipProvider>
+      <Tooltip>
+      <TooltipTrigger asChild>
         <PopoverTrigger asChild>
           <Button variant="ghost" size="icon">
             <MapPinIcon className="size-5 shrink-0" />
           </Button>
         </PopoverTrigger>
+      </TooltipTrigger>
+      <TooltipContent side="top">
+        <p>{t("location.location-tooltip")}</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
+
       )}
       <PopoverContent align="center">
         <div className="min-w-80 sm:w-lg p-1 flex flex-col justify-start items-start">
